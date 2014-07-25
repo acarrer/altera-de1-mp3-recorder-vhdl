@@ -1,0 +1,95 @@
+Restore Archived Project report for RegistratorePortatile_v2
+Thu Mar 07 19:31:23 2013
+Quartus II Version 9.1 Build 222 10/21/2009 SJ Full Version
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Restore Archived Project Summary
+  3. Restore Archived Project Messages
+  4. Files Restored
+  5. Files Not Restored
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2009 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++-------------------------------------------------------------------------+
+; Restore Archived Project Summary                                        ;
++---------------------------------+---------------------------------------+
+; Restore Archived Project Status ; Successful - Thu Mar 07 19:31:23 2013 ;
+; Revision Name                   ; RegistratorePortatile_v2              ;
+; Top-level Entity Name           ; RegistratorePortatile                 ;
+; Family                          ; Cyclone II                            ;
++---------------------------------+---------------------------------------+
+
+
++-----------------------------------+
+; Restore Archived Project Messages ;
++-----------------------------------+
+Info: Successfully restored 'D:/Andridocs/Universita/Reti Logiche/Progetto/RegistratorePortatle/vr_tmp_archive.qar' into the 'D:/Andridocs/Universita/Reti Logiche/Progetto/RegistratorePortatle_copy/' directory
+Info: Generated report 'RegistratorePortatile_v2.restore.rpt'
+
+
++-------------------------------------------------------------------------------------------+
+; Files Restored                                                                            ;
++-------------------------------------------------------------------------------------------+
+; File Name                                                                                 ;
++-------------------------------------------------------------------------------------------+
+; Dropbox/DaArchiviare/Progetto Reti Logiche/voice_recorder_demo/voice_recorder_demo/vr.dpf ;
+; Audio.vhd                                                                                 ;
+; ChipConfig.vhd                                                                            ;
+; Controllori_AV/Altera_UP_Audio_Bit_Counter.v                                              ;
+; Controllori_AV/Altera_UP_Audio_In_Deserializer.v                                          ;
+; Controllori_AV/Altera_UP_Audio_Out_Serializer.v                                           ;
+; Controllori_AV/Altera_UP_Clock_Edge.v                                                     ;
+; Controllori_AV/Altera_UP_I2C.v                                                            ;
+; Controllori_AV/Altera_UP_I2C_AV_Auto_Initialize.v                                         ;
+; Controllori_AV/Altera_UP_SYNC_FIFO.v                                                      ;
+; Controllori_AV/Altera_UP_Slow_Clock_Generator.v                                           ;
+; Controllori_AV/Audio_Clock.v                                                              ;
+; Controllori_AV/Audio_Controller.v                                                         ;
+; Controllori_AV/Audio_and_Video_Config.v                                                   ;
+; Controllori_AV/vga_adapter.v                                                              ;
+; Controllori_AV/vga_address_translator.v                                                   ;
+; Controllori_AV/vga_controller.v                                                           ;
+; Display.vhd                                                                               ;
+; PlayRecord.vhd                                                                            ;
+; RegistratorePortatile.v                                                                   ;
+; RegistratorePortatile_v2.qsf                                                              ;
+; RegistratorePortatile_v2_assignment_defaults.qdf                                          ;
+; SDRAM_PLL.v                                                                               ;
+; audio.vhd                                                                                 ;
+; hex2seg.vhd                                                                               ;
+; sdram.v                                                                                   ;
+; vr.qpf                                                                                    ;
+; VoiceRecorder_DE1/vr.dpf                                                                  ;
++-------------------------------------------------------------------------------------------+
+
+
++--------------------+
+; Files Not Restored ;
++--------------------+
+; File Name          ;
++--------------------+
+
+
