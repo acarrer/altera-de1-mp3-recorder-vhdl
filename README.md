@@ -16,3 +16,7 @@ The project aims to use the Altera DE1 board as simulator of a portable audio re
 
 5) Connection to a VGA monitor to display the audio waveform.
 
+
+You have the permission to deal with the Software without restriction, as written in the MIT License file. Please remember to write my name and cite my original project if you want to take my code (or part/parts of it) for your personal use. Thank you!
+
+Copyright (c) 2014 Andrea Carrer
