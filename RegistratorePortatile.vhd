@@ -1,23 +1,23 @@
 -- **********************************************************
---   Corso di Reti Logiche - Progetto Registratore Portatile
+--   Corso di Reti Logiche - "Mp3 Recorder" Project
 --   Andrea Carrer - 729101
---   Modulo RegistratorePortatile.vhd
---   Versione 1.02 - 18.03.2013
+--   Module RegistratorePortatile.vhd
+--   Version 1.02 - 18.03.2013
 -- **********************************************************
 
 -- **********************************************************
--- Modulo principale scritto in Verilog.
+-- Main Module, written in VHDL.
 -- Definisce la logica e le connessioni tra i diversi moduli:
 -- - PlayRecord: 		gestione comandi registratore
 -- - Display:			gestione segnali grafica
--- - Audio_Controller:	interfaccia con il chip WM8731
+-- - Audio_Controller:		interfaccia con il chip WM8731
 -- - VGA_Adapter:		interfaccia con l'uscita VGA
--- - SDRAM:				interfaccia con la SDRAM
+-- - SDRAM:			interfaccia con la SDRAM
 -- E gestisce i componenti I/O della scheda Altera DE1
 -- **********************************************************
 
 -- --------------------------------------------------------------------------------------------
--- -------------------------------------------------------------- Definizione modulo principale
+-- --------------------------------------------------------------------- Main Module definition
 -- --------------------------------------------------------------------------------------------
 
 library ieee;
@@ -143,26 +143,26 @@ architecture behaviour of RegistratorePortatile is
 	end component;
 	
 	component PlayRecord is port (
-		CLOCK_50				: in std_logic;
-		CLOCK_1S				: in std_logic;
-		reset					: in std_logic;
-		ram_addr				: out std_logic_vector(21 downto 0);
-		ram_data_in				: out std_logic_vector(15 downto 0);
-		ram_read				: out std_logic;
-		ram_write				: out std_logic;
+		CLOCK_50			: in std_logic;
+		CLOCK_1S			: in std_logic;
+		reset				: in std_logic;
+		ram_addr			: out std_logic_vector(21 downto 0);
+		ram_data_in			: out std_logic_vector(15 downto 0);
+		ram_read			: out std_logic;
+		ram_write			: out std_logic;
 		ram_data_out			: in std_logic_vector(15 downto 0);
-		ram_valid				: in std_logic;
-		ram_waitrq				: in std_logic;
-		audio_out				: out std_logic_vector(15 downto 0);
-		audio_in				: in std_logic_vector(15 downto 0);
+		ram_valid			: in std_logic;
+		ram_waitrq			: in std_logic;
+		audio_out			: out std_logic_vector(15 downto 0);
+		audio_in			: in std_logic_vector(15 downto 0);
 		audio_out_allowed		: in std_logic;
 		audio_in_available		: in std_logic;
 		write_audio_out			: out std_logic;
 		read_audio_in			: out std_logic;
-		play					: in std_logic;
-		rec						: in std_logic;
-		pause					: in std_logic;
-		speed					: in std_logic_vector(1 downto 0);
+		play				: in std_logic;
+		rec				: in std_logic;
+		pause				: in std_logic;
+		speed				: in std_logic_vector(1 downto 0);
 
 		ram_addr_max			: in std_logic_vector(21 downto 0);
 		playLimitReached		: inout std_logic;
@@ -176,10 +176,10 @@ architecture behaviour of RegistratorePortatile is
 		clock:		in std_logic;
 		clock_25:	in std_logic;
 		colour:		in std_logic;
-		x:			in std_logic_vector(8 downto 0);	-- Coordinata x
-		y:			in std_logic_vector(7 downto 0);	-- Coordinata y
-		plot:		in std_logic;						-- Quando e'=1, il pixel (x,y) cambiera' colore (bisogna plottare)
-														-- Segnali per il DAC per pilotare the monitor.
+		x:			in std_logic_vector(8 downto 0);	-- x coordinate
+		y:			in std_logic_vector(7 downto 0);	-- y coordinate
+		plot:		in std_logic;					-- Quando e'=1, il pixel (x,y) cambiera' colore (bisogna plottare)
+										-- Segnali per il DAC per pilotare the monitor.
 		VGA_R:		out std_logic_vector(9 downto 0);
 		VGA_G:		out std_logic_vector(9 downto 0);
 		VGA_B:		out std_logic_vector(9 downto 0);
@@ -217,23 +217,23 @@ architecture behaviour of RegistratorePortatile is
 	end component;
 
 	-- Segnali usati per leggere e scrivere dalla RAM
-	signal ram_addr:									std_logic_vector(21 downto 0);	-- Indirizzamento a 22 bit
-	signal ram_data_in, ram_data_out:					std_logic_vector(15 downto 0);	-- Bus dati a 16 bit I/O
+	signal ram_addr:					std_logic_vector(21 downto 0);	-- Indirizzamento a 22 bit
+	signal ram_data_in, ram_data_out:			std_logic_vector(15 downto 0);	-- Bus dati a 16 bit I/O
 	signal ram_valid, ram_waitrq, ram_read, ram_write:	std_logic;						-- Segnali di abilitazione per lettura/scrittura
 
-	signal ram_addr_max:								std_logic_vector(21 downto 0);	-- Memorizza l'ultimo banco di RAM memorizzato
-	signal playLimitReached:							std_logic;						-- A 1 se durante il play si raggiunge la fine della registrazione
+	signal ram_addr_max:					std_logic_vector(21 downto 0);	-- Memorizza l'ultimo banco di RAM memorizzato
+	signal playLimitReached:				std_logic;						-- A 1 se durante il play si raggiunge la fine della registrazione
 
 	-- Segnali per gestione lettura/scrittura audio
-	signal audio_out, audio_in:		 					std_logic_vector(15 downto 0);	-- Bus a 16 bit
+	signal audio_out, audio_in:		 		std_logic_vector(15 downto 0);	-- Bus a 16 bit
 	signal audio_out_allowed, audio_in_available:		std_logic;						-- Segnali di controllo abilitazione lettura/scrittura audio
-	signal write_audio_out, read_audio_in:				std_logic;
+	signal write_audio_out, read_audio_in:			std_logic;
 
 	-- Segnali per interfaccia con VGA
-	signal vga_color:									std_logic;						-- Colore (monocromatico, pixel acceso/spento)
-	signal vga_x:										std_logic_vector(8 downto 0);	-- x massimo = 319 (9 bit)
-	signal vga_y:										std_logic_vector(7 downto 0);	-- y massimo = 239 (8 bit)
-	signal vga_plot:									std_logic;						-- Abilitazione a scrittura pixel
+	signal vga_color:					std_logic;						-- Colore (monocromatico, pixel acceso/spento)
+	signal vga_x:						std_logic_vector(8 downto 0);	-- x massimo = 319 (9 bit)
+	signal vga_y:						std_logic_vector(7 downto 0);	-- y massimo = 239 (8 bit)
+	signal vga_plot:					std_logic;						-- Abilitazione a scrittura pixel
 
 	-- Visualizzo l'uscita se sono in Play, altrimenti visualizzo l'ingresso del microfono
 	signal display_data:			 					std_logic_vector(15 downto 0);
